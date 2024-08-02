@@ -20,7 +20,6 @@
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
 
-
     <link rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/table-datatable.css') }}">
 
@@ -31,41 +30,6 @@
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/iconly.css') }}">
     @stack('header-styles')
-    {{-- <style>
-        .paginate_button {
-            display: inline-block;
-            padding: 0.5em 1em;
-            text-decoration: none;
-            background-color: #435ebe;
-            color: #fff;
-            border: 1px solid #435ebe;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-
-        .paginate_button.disabled {
-            opacity: 0.5;
-            cursor: default;
-        }
-
-        .paginate_button.current {
-            background-color: #435ebe;
-            border-color: #435ebe;
-            pointer-events: none;
-            cursor: default;
-        }
-
-        .paginate_button.previous,
-        .paginate_button.next {
-            background-color: #435ebe;
-        }
-
-        .paginate_button:hover {
-            background-color: #526bc8;
-            border-color: #526bc8;
-        }
-    </style> --}}
 </head>
 
 <body>

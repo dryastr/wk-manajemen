@@ -15,9 +15,7 @@ return new class extends Migration
             $table->string('nis')->unique()->nullable();
             $table->string('kelas')->nullable();
             $table->unsignedBigInteger('jurusan_id')->nullable();
-            $table->unsignedBigInteger('rayon_id')->nullable();
             $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('set null');
-            $table->foreign('rayon_id')->references('id')->on('rayons')->onDelete('set null');
         });
     }
 
@@ -28,8 +26,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['jurusan_id']);
-            $table->dropForeign(['rayon_id']);
-            $table->dropColumn(['nis', 'kelas', 'jurusan_id', 'rayon_id', 'role_id']);
+            $table->dropColumn(['nis', 'kelas', 'jurusan_id', 'role_id']);
         });
     }
 };

@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->belongsTo(Rayon::class);
     }
 
+    public function rayons()
+    {
+        return $this->belongsToMany(Rayon::class, 'user_rayons');
+    }
+
     public function rombel()
     {
         return $this->belongsTo(Rombel::class);

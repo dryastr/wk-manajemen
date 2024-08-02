@@ -2,6 +2,11 @@
 
 @section('title', 'Tambah Pengguna')
 
+@push('header-styles')
+    {{-- links --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('content')
     <div class="col-md-12 col-12">
         <div class="card">
@@ -95,10 +100,24 @@
                                     <label for="rayon_id">Rayon</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="rayon-input" style="display: none;">
-                                    <select id="rayon_id" class="form-control" name="rayon_id">
-                                        <option value="" disabled selected>Pilih Rayon</option>
+                                    <select id="rayon_id" class="form-control select2" name="rayon_id[]" multiple>
+                                        <option value="" disabled>Pilih Rayon</option>
                                         @foreach ($rayons as $rayon)
                                             <option value="{{ $rayon->id }}">{{ $rayon->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="button" class="btn btn-danger mt-2" onclick="clearRayons()">Hapus
+                                        Pilihan
+                                        Rayon</button>
+                                </div>
+                                <div class="col-md-4" id="rombel-group" style="display: none;">
+                                    <label for="rombel_id">Rombel</label>
+                                </div>
+                                <div class="col-md-8 form-group" id="rombel-input" style="display: none;">
+                                    <select id="rombel_id" class="form-control" name="rombel_id">
+                                        <option value="" disabled selected>Pilih Rombel</option>
+                                        @foreach ($rombels as $rombel)
+                                            <option value="{{ $rombel->id }}">{{ $rombel->nama }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -116,16 +135,19 @@
 @endsection
 
 @push('scripts')
+    {{-- links --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         function toggleFields() {
             var roleSelect = document.getElementById('role_id');
             var roleName = roleSelect.options[roleSelect.selectedIndex].getAttribute('data-role');
 
-            // Define visibility rules
             var showNIS = roleName === 'user';
             var showKelas = roleName === 'user';
             var showJurusan = roleName === 'user' || roleName === 'kaprog';
             var showRayon = roleName === 'user' || roleName === 'pemray';
+            var showRombel = roleName === 'user';
 
             document.getElementById('nis-group').style.display = showNIS ? 'block' : 'none';
             document.getElementById('nis-input').style.display = showNIS ? 'block' : 'none';
@@ -135,10 +157,23 @@
             document.getElementById('jurusan-input').style.display = showJurusan ? 'block' : 'none';
             document.getElementById('rayon-group').style.display = showRayon ? 'block' : 'none';
             document.getElementById('rayon-input').style.display = showRayon ? 'block' : 'none';
+            document.getElementById('rombel-group').style.display = showRombel ? 'block' : 'none';
+            document.getElementById('rombel-input').style.display = showRombel ? 'block' : 'none';
+
+            if (showRayon) {
+                $('.select2').select2({
+                    placeholder: "Pilih Rayon",
+                    allowClear: true
+                });
+            }
         }
 
-        // Initialize form visibility based on the initial role selection (if any)
-        document.addEventListener('DOMContentLoaded', function() {
+        function clearRayons() {
+            var rayonSelect = $('#rayon_id').select2();
+            rayonSelect.val(null).trigger('change');
+        }
+
+        $(document).ready(function() {
             toggleFields();
         });
     </script>

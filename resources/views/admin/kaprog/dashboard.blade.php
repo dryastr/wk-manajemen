@@ -1,14 +1,57 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@section('title', 'Dashboard')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">KAPROG Dashboard</div>
-
-                    <div class="card-body">
-                        You are logged in as KAPROG!
+    <div class="row">
+        <div class="page-heading">
+            <h3>Dashboard</h3>
+            <p>Selamat datang, </p>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <h6 class="text-muted font-semibold">Selesai</h6>
+                            <h6 class="font-extrabold mb-0"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <h6 class="text-muted font-semibold">Dalam Pengerjaan</h6>
+                            <h6 class="font-extrabold mb-0"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <h6 class="text-muted font-semibold">Ditolak</h6>
+                            <h6 class="font-extrabold mb-0"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <h6 class="text-muted font-semibold">Belum Dikerjakan</h6>
+                            <h6 class="font-extrabold mb-0"></h6>
+                        </div>
                     </div>
                 </div>
             </div>
