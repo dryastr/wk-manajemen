@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Rayon::class);
     }
+
+    public function rombel()
+    {
+        return $this->belongsTo(Rombel::class);
+    }
 }

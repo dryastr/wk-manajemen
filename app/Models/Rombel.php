@@ -15,4 +15,9 @@ class Rombel extends Model
     {
         return $this->belongsTo(Jurusan::class, 'kode_id');
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

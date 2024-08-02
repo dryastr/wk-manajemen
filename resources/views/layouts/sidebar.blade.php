@@ -83,6 +83,21 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item has-sub {{ Request::is('rombels*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Rombel</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('rombels.index') ? 'active' : '' }}">
+                            <a href="{{ route('rombels.index') }}" class="submenu-link">Daftar Rombel</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('rombels.create') ? 'active' : '' }}">
+                            <a href="{{ route('rombels.create') }}" class="submenu-link">Tambah Rombel</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="sidebar-item has-sub {{ Request::is('addusers*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-card-checklist"></i>
