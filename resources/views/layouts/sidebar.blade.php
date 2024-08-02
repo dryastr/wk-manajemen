@@ -115,6 +115,24 @@
                 </li>
             @endif
 
+            @if (auth()->user()->role->name == 'kaprog')
+                <li class="sidebar-item has-sub {{ Request::is('validasi*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Validasi</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('validasi.index') ? 'active' : '' }}">
+                            <a href="{{ route('validasi.index') }}" class="submenu-link">Test Kelayakan</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('validasi_kecakapan.index') ? 'active' : '' }}">
+                            <a href="{{ route('validasi_kecakapan.index') }}" class="submenu-link">Kecakapan Hardskill</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
             @if (auth()->user()->role->name == 'user')
                 <li class="sidebar-item has-sub {{ Request::is('profiles*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
@@ -136,8 +154,6 @@
                     </ul>
                 </li>
             @endif
-
-
 
             <li class="sidebar-item">
                 <a href="{{ route('logout') }}" class='sidebar-link'

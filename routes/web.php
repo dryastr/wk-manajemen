@@ -4,8 +4,11 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\KaprogController;
 use App\Http\Controllers\admin\manajemen\AddUsersController;
 use App\Http\Controllers\admin\manajemen\JurusansController;
+use App\Http\Controllers\admin\manajemen\KecakapanHardskillsController;
 use App\Http\Controllers\admin\manajemen\RayonsController;
 use App\Http\Controllers\admin\manajemen\RombelsController;
+use App\Http\Controllers\admin\manajemen\TestKelayakansController;
+use App\Http\Controllers\admin\manajemen\ValidasiKaprogController;
 use App\Http\Controllers\admin\PemrayController;
 use App\Http\Controllers\admin\SuperAdminController;
 use App\Http\Controllers\user\UserController;
@@ -67,6 +70,10 @@ Route::middleware(['auth', 'role.admin'])->group(function () {
 
 Route::middleware(['auth', 'role.kaprog'])->group(function () {
     Route::get('/kaprog', [KaprogController::class, 'index'])->name('kaprog.dashboard');
+    Route::resource('validasi', TestKelayakansController::class)->except(['create', 'store', 'show', 'destroy']);
+    Route::resource('validasi_kecakapan', KecakapanHardskillsController::class)->except(['create', 'store', 'show', 'destroy']);
+    Route::get('validasi_kecakapan/export/{status}', [KecakapanHardskillsController::class, 'exportExcel'])->name('validasi_kecakapan.export');
+    Route::get('validasi/export/{status}', [TestKelayakansController::class, 'exportExcel'])->name('validasi.export');
 });
 
 Route::middleware(['auth', 'role.pemray'])->group(function () {

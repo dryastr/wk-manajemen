@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Rombel::class);
     }
+
+    public function kecakapanHardskills()
+    {
+        return $this->hasMany(KecakapanHardskill::class);
+    }
 }
