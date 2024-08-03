@@ -1,8 +1,11 @@
 <?php
 
+use App\Exports\BebasPustakaExport;
+use App\Exports\BebasTunggakanExport;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\KaprogController;
 use App\Http\Controllers\admin\manajemen\AddUsersController;
+use App\Http\Controllers\admin\manajemen\BebasPustakasController;
 use App\Http\Controllers\admin\manajemen\BebasTunggakansController;
 use App\Http\Controllers\admin\manajemen\JurusansController;
 use App\Http\Controllers\admin\manajemen\KecakapanHardskillsController;
@@ -69,7 +72,9 @@ Route::middleware(['auth', 'role.admin'])->group(function () {
     Route::resource('kecakapan_softskills', KecakapanSoftskillsController::class)->except(['create', 'store', 'show', 'destroy']);
     Route::get('kecakapan_softskills/export/{status}', [KecakapanSoftskillsController::class, 'exportExcel'])->name('kecakapan_softskills.export');
     Route::resource('bebas_tunggakan', BebasTunggakansController::class)->except(['create', 'store', 'show', 'destroy']);
-    Route::get('bebas_tunggakan/export/{status}', [BebasTunggakansController::class, 'exportExcel'])->name('bebas_tunggakan.export');
+    Route::get('bebas_tunggakan/export/{status}', [BebasTunggakanExport::class, 'exportExcel'])->name('bebas_tunggakan.export');
+    Route::resource('bebas_pustaka', BebasPustakasController::class)->except(['create', 'store', 'show', 'destroy']);
+    Route::get('bebas_pustaka/export/{status}', [BebasPustakaExport::class, 'exportExcel'])->name('bebas_pustaka.export');
 });
 
 Route::middleware(['auth', 'role.kaprog'])->group(function () {
@@ -82,6 +87,8 @@ Route::middleware(['auth', 'role.kaprog'])->group(function () {
 
 Route::middleware(['auth', 'role.pemray'])->group(function () {
     Route::get('/pemray', [PemrayController::class, 'index'])->name('pemray.dashboard');
+    Route::get('/data_siswa', [PemrayController::class, 'dataSiswa'])->name('data_siswa.index');
+    Route::get('data_siswa/export', [PemrayController::class, 'exportExcel'])->name('data_siswa.export');
 });
 
 Route::middleware(['auth', 'role.user'])->group(function () {

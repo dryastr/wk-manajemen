@@ -28,6 +28,7 @@ class User extends Authenticatable
         'kecakapan_hardskill',
         'kecakapan_softskill',
         'bebas_tunggakan',
+        'bebas_pustaka',
         'test_kelayakan',
     ];
 
@@ -67,7 +68,7 @@ class User extends Authenticatable
 
     public function rayons()
     {
-        return $this->belongsToMany(Rayon::class, 'user_rayons');
+        return $this->belongsToMany(Rayon::class, 'user_rayons', 'user_id', 'rayon_id');
     }
 
     public function rombel()

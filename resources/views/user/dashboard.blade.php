@@ -6,7 +6,7 @@
     <div class="row">
         <div class="page-heading">
             <h3>Dashboard</h3>
-            <p>Selamat datang, </p>
+            <p>Selamat datang, {{ Auth::user()->name }} </p>
         </div>
         <div class="col-6 col-lg-3 col-md-6">
             <div class="card">

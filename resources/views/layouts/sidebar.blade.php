@@ -117,7 +117,7 @@
 
             @if (auth()->user()->role->name == 'admin')
                 <li
-                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') ? 'active' : '' }}">
+                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') ||  Request::is('bebas_pustaka*')? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-card-checklist"></i>
                         <span>Validasi</span>
@@ -130,6 +130,25 @@
                         </li>
                         <li class="submenu-item {{ Request::routeIs('bebas_tunggakan.index') ? 'active' : '' }}">
                             <a href="{{ route('bebas_tunggakan.index') }}" class="submenu-link">Bebas Tunggakan</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('bebas_pustaka.index') ? 'active' : '' }}">
+                            <a href="{{ route('bebas_pustaka.index') }}" class="submenu-link">Bebas Pustaka</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
+            @if (auth()->user()->role->name == 'pemray')
+                <li
+                    class="sidebar-item has-sub {{ Request::is('data_siswa*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Data Siswa</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('data_siswa.index') ? 'active' : '' }}">
+                            <a href="{{ route('data_siswa.index') }}" class="submenu-link">Daftar Siswa</a>
                         </li>
                     </ul>
                 </li>
