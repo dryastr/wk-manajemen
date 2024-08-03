@@ -25,6 +25,10 @@ class User extends Authenticatable
         'kelas',
         'jurusan_id',
         'rayon_id',
+        'kecakapan_hardskill',
+        'kecakapan_softskill',
+        'bebas_tunggakan',
+        'test_kelayakan',
     ];
 
     /**
@@ -69,10 +73,5 @@ class User extends Authenticatable
     public function rombel()
     {
         return $this->belongsTo(Rombel::class);
-    }
-
-    public function kecakapanHardskills()
-    {
-        return $this->hasMany(KecakapanHardskill::class);
     }
 }

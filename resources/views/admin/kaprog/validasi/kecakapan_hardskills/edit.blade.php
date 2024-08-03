@@ -6,11 +6,11 @@
     <div class="col-md-12 col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Edit Validasi Kecakapan Hardskill untuk {{ $user->name }}</h4>
+                <h4 class="card-title">Edit Validasi Kecakapan Hardskill untuk {{ $detailUserEdit->name }}</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form action="{{ route('validasi_kecakapan.update', $user->id) }}" method="POST"
+                    <form action="{{ route('validasi_kecakapan.update', $detailUserEdit->id) }}" method="POST"
                         class="form form-horizontal">
                         @csrf
                         @method('PUT')
@@ -22,11 +22,11 @@
                                 <div class="col-md-8 form-group">
                                     <select id="kecakapan_hardskill" name="kecakapan_hardskill"
                                         class="form-control @error('kecakapan_hardskill') is-invalid @enderror" required>
-                                        <option value="iya" {{ $user->kecakapan_hardskill === 'iya' ? 'selected' : '' }}>
+                                        <option value="iya" {{ $detailUserEdit->kecakapan_hardskill === 'iya' ? 'selected' : '' }}>
                                             Iya
                                         </option>
                                         <option value="tidak"
-                                            {{ $user->kecakapan_hardskill === 'tidak' ? 'selected' : '' }}>
+                                            {{ $detailUserEdit->kecakapan_hardskill === 'tidak' ? 'selected' : '' }}>
                                             Tidak</option>
                                     </select>
                                     @error('kecakapan_hardskill')

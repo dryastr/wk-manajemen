@@ -8,6 +8,9 @@
 @endpush
 
 @section('content')
+    {{-- @php
+        dd(session()->all(), $detailUserEdit);
+    @endphp --}}
     <div class="col-md-12 col-12">
         <div class="card">
             <div class="card-header">
@@ -15,7 +18,7 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form action="{{ route('addusers.update', $user->id) }}" method="POST" class="form form-horizontal">
+                    <form action="{{ route('addusers.update', $detailUserEdit->id) }}" method="POST" class="form form-horizontal">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
@@ -25,14 +28,14 @@
                                 </div>
                                 <div class="col-md-8 form-group">
                                     <input type="text" id="name" class="form-control" name="name"
-                                        placeholder="Nama Pengguna" value="{{ old('name', $user->name) }}" required>
+                                        placeholder="Nama Pengguna" value="{{ old('name', $detailUserEdit->name) }}" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col-md-8 form-group">
                                     <input type="email" id="email" class="form-control" name="email"
-                                        placeholder="Email Pengguna" value="{{ old('email', $user->email) }}" required>
+                                        placeholder="Email Pengguna" value="{{ old('email', $detailUserEdit->email) }}" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="password">Password</label>
@@ -53,7 +56,7 @@
                                         <option value="" disabled>Pilih Role</option>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}" data-role="{{ $role->name }}"
-                                                @if ($role->id == $user->role_id) selected @endif>
+                                                @if ($role->id == $detailUserEdit->role_id) selected @endif>
                                                 @if ($role->name == 'super_admin')
                                                     Super Admin
                                                 @elseif ($role->name == 'admin')
@@ -70,55 +73,55 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4" id="nis-group"
-                                    style="{{ $user->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
                                     <label for="nis">NIS</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="nis-input"
-                                    style="{{ $user->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
                                     <input type="text" id="nis" class="form-control" name="nis"
-                                        value="{{ old('nis', $user->nis ?? $nis) }}" readonly>
+                                        value="{{ old('nis', $detailUserEdit->nis ?? $nis) }}" readonly>
                                 </div>
                                 <div class="col-md-4" id="kelas-group"
-                                    style="{{ $user->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
                                     <label for="kelas">Kelas</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="kelas-input"
-                                    style="{{ $user->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
                                     <select id="kelas" class="form-control" name="kelas">
                                         <option value="" disabled selected>Pilih Kelas</option>
-                                        <option value="X" @if ($user->kelas == 'X') selected @endif>X</option>
-                                        <option value="XI" @if ($user->kelas == 'XI') selected @endif>XI</option>
-                                        <option value="XII" @if ($user->kelas == 'XII') selected @endif>XII
+                                        <option value="X" @if ($detailUserEdit->kelas == 'X') selected @endif>X</option>
+                                        <option value="XI" @if ($detailUserEdit->kelas == 'XI') selected @endif>XI</option>
+                                        <option value="XII" @if ($detailUserEdit->kelas == 'XII') selected @endif>XII
                                         </option>
                                     </select>
                                 </div>
                                 <div class="col-md-4" id="jurusan-group"
-                                    style="{{ $user->role->name === 'user' || $user->role->name === 'kaprog' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' || $detailUserEdit->role->name === 'kaprog' ? 'display: block;' : 'display: none;' }}">
                                     <label for="jurusan_id">Jurusan</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="jurusan-input"
-                                    style="{{ $user->role->name === 'user' || $user->role->name === 'kaprog' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' || $detailUserEdit->role->name === 'kaprog' ? 'display: block;' : 'display: none;' }}">
                                     <select id="jurusan_id" class="form-control" name="jurusan_id">
                                         <option value="" disabled selected>Pilih Jurusan</option>
                                         @foreach ($jurusans as $jurusan)
                                             <option value="{{ $jurusan->id }}"
-                                                @if ($user->jurusan_id == $jurusan->id) selected @endif>{{ $jurusan->name }}
+                                                @if ($detailUserEdit->jurusan_id == $jurusan->id) selected @endif>{{ $jurusan->name }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4" id="rayon-group"
-                                    style="{{ $user->role->name === 'user' || $user->role->name === 'pemray' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' || $detailUserEdit->role->name === 'pemray' ? 'display: block;' : 'display: none;' }}">
                                     <label for="rayon_id">Rayon</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="rayon-input"
-                                    style="{{ $user->role->name === 'user' || $user->role->name === 'pemray' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' || $detailUserEdit->role->name === 'pemray' ? 'display: block;' : 'display: none;' }}">
                                     <select id="rayon_id" class="form-control select2" name="rayon_id[]"
                                         multiple="multiple">
                                         <option value="" disabled>Pilih Rayon</option>
                                         @foreach ($rayons as $rayon)
                                             <option value="{{ $rayon->id }}"
-                                                @if (in_array($rayon->id, $user->rayons->pluck('id')->toArray())) selected @endif>
+                                                @if (in_array($rayon->id, $detailUserEdit->rayons->pluck('id')->toArray())) selected @endif>
                                                 {{ $rayon->name }}
                                             </option>
                                         @endforeach
@@ -127,16 +130,16 @@
                                         Pilihan Rayon</button>
                                 </div>
                                 <div class="col-md-4" id="rombel-group"
-                                    style="{{ $user->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
                                     <label for="rombel_id">Rombel</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="rombel-input"
-                                    style="{{ $user->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
+                                    style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
                                     <select id="rombel_id" class="form-control" name="rombel_id">
                                         <option value="" disabled selected>Pilih Rombel</option>
                                         @foreach ($rombels as $rombel)
                                             <option value="{{ $rombel->id }}"
-                                                @if ($user->rombel_id == $rombel->id) selected @endif>{{ $rombel->nama }}
+                                                @if ($detailUserEdit->rombel_id == $rombel->id) selected @endif>{{ $rombel->nama }}
                                             </option>
                                         @endforeach
                                     </select>

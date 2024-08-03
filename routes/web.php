@@ -3,8 +3,10 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\KaprogController;
 use App\Http\Controllers\admin\manajemen\AddUsersController;
+use App\Http\Controllers\admin\manajemen\BebasTunggakansController;
 use App\Http\Controllers\admin\manajemen\JurusansController;
 use App\Http\Controllers\admin\manajemen\KecakapanHardskillsController;
+use App\Http\Controllers\admin\manajemen\KecakapanSoftskillsController;
 use App\Http\Controllers\admin\manajemen\RayonsController;
 use App\Http\Controllers\admin\manajemen\RombelsController;
 use App\Http\Controllers\admin\manajemen\TestKelayakansController;
@@ -64,8 +66,10 @@ Route::middleware(['auth', 'role.super_admin'])->group(function () {
 
 Route::middleware(['auth', 'role.admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
-    Route::post('/admin/profile', [AdminController::class, 'updateProfile'])->name('admin.profile.update');
+    Route::resource('kecakapan_softskills', KecakapanSoftskillsController::class)->except(['create', 'store', 'show', 'destroy']);
+    Route::get('kecakapan_softskills/export/{status}', [KecakapanSoftskillsController::class, 'exportExcel'])->name('kecakapan_softskills.export');
+    Route::resource('bebas_tunggakan', BebasTunggakansController::class)->except(['create', 'store', 'show', 'destroy']);
+    Route::get('bebas_tunggakan/export/{status}', [BebasTunggakansController::class, 'exportExcel'])->name('bebas_tunggakan.export');
 });
 
 Route::middleware(['auth', 'role.kaprog'])->group(function () {

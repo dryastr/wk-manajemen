@@ -41,8 +41,8 @@ class KecakapanHardskillsController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.kaprog.validasi.kecakapan_hardskills.edit', compact('user'));
+        $detailUserEdit = User::findOrFail($id);
+        return view('admin.kaprog.validasi.kecakapan_hardskills.edit', compact('detailUserEdit'));
     }
 
     /**

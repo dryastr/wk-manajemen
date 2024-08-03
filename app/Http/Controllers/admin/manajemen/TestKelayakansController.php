@@ -40,8 +40,8 @@ class TestKelayakansController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.kaprog.validasi.test_kelayakans.edit', compact('user'));
+        $detailUserEdit = User::findOrFail($id);
+        return view('admin.kaprog.validasi.test_kelayakans.edit', compact('detailUserEdit'));
     }
 
     /**

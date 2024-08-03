@@ -115,6 +115,26 @@
                 </li>
             @endif
 
+            @if (auth()->user()->role->name == 'admin')
+                <li
+                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Validasi</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('kecakapan_softskills.index') ? 'active' : '' }}">
+                            <a href="{{ route('kecakapan_softskills.index') }}" class="submenu-link">Kecakapan
+                                Softskill</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('bebas_tunggakan.index') ? 'active' : '' }}">
+                            <a href="{{ route('bebas_tunggakan.index') }}" class="submenu-link">Bebas Tunggakan</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
             @if (auth()->user()->role->name == 'kaprog')
                 <li class="sidebar-item has-sub {{ Request::is('validasi*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
@@ -127,7 +147,8 @@
                             <a href="{{ route('validasi.index') }}" class="submenu-link">Test Kelayakan</a>
                         </li>
                         <li class="submenu-item {{ Request::routeIs('validasi_kecakapan.index') ? 'active' : '' }}">
-                            <a href="{{ route('validasi_kecakapan.index') }}" class="submenu-link">Kecakapan Hardskill</a>
+                            <a href="{{ route('validasi_kecakapan.index') }}" class="submenu-link">Kecakapan
+                                Hardskill</a>
                         </li>
                     </ul>
                 </li>

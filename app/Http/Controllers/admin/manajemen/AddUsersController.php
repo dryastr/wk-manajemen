@@ -10,6 +10,7 @@ use App\Models\Rombel; // Tambahkan import model Rombel
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AddUsersController extends Controller
 {
@@ -99,7 +100,8 @@ class AddUsersController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        // Ambil data user berdasarkan ID
+        $detailUserEdit = User::findOrFail($id);
         $roles = Role::all();
         $jurusans = Jurusan::all();
         $rayons = Rayon::all();
@@ -111,7 +113,11 @@ class AddUsersController extends Controller
             $nis = $this->generateNIS();
         }
 
-        return view('admin.super_admin.users.edit', compact('user', 'roles', 'jurusans', 'rayons', 'rombels', 'nis'));
+        // Debugging session
+        // dd(Session::all(), $detailUserEdit);
+        // Session::forget('user');
+
+        return view('admin.super_admin.users.edit', compact('detailUserEdit', 'roles', 'jurusans', 'rayons', 'rombels', 'nis'));
     }
 
     public function update(Request $request, $id)
