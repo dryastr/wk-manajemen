@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Rombel::class);
     }
+
+    public function userRayon()
+    {
+        return $this->hasOne(UserRayon::class);
+    }
 }

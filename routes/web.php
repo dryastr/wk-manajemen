@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\manajemen\TestKelayakansController;
 use App\Http\Controllers\admin\manajemen\ValidasiKaprogController;
 use App\Http\Controllers\admin\PemrayController;
 use App\Http\Controllers\admin\SuperAdminController;
+use App\Http\Controllers\user\manajemen\PersyaratansController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\manajemen\ProfilesController;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +94,8 @@ Route::middleware(['auth', 'role.pemray'])->group(function () {
 
 Route::middleware(['auth', 'role.user'])->group(function () {
     Route::get('/home', [UserController::class, 'index'])->name('home');
+    // Route::get('/persyaratan/export-pdf', [UserController::class, 'exportPdf'])->name('persyaratan.exportPdf');
+    Route::get('/persyaratan/print', [UserController::class, 'showPdfPage'])->name('persyaratan.print');
     Route::get('profiles/{id}', [ProfilesController::class, 'show'])->name('profiles.show');
     Route::get('profiles/{id}/edit', [ProfilesController::class, 'edit'])->name('profiles.edit');
     Route::put('profiles/{id}', [ProfilesController::class, 'update'])->name('profiles.update');

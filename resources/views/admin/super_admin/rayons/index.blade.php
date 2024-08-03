@@ -41,9 +41,6 @@
                                                     <ul class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuButton-{{ $rayon->id }}">
                                                         <li><a class="dropdown-item"
-                                                                href="{{ route('rayons.show', $rayon->id) }}">Detail</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item"
                                                                 href="{{ route('rayons.edit', $rayon->id) }}">Ubah</a></li>
                                                         <li>
                                                             <form action="{{ route('rayons.destroy', $rayon->id) }}"

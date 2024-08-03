@@ -15,4 +15,9 @@ class UserRayon extends Model
         'user_id',
         'rayon_id',
     ];
+
+    public function rayon()
+    {
+        return $this->belongsTo(Rayon::class);
+    }
 }

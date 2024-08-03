@@ -117,7 +117,7 @@
 
             @if (auth()->user()->role->name == 'admin')
                 <li
-                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') ||  Request::is('bebas_pustaka*')? 'active' : '' }}">
+                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') || Request::is('bebas_pustaka*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-card-checklist"></i>
                         <span>Validasi</span>
@@ -139,8 +139,7 @@
             @endif
 
             @if (auth()->user()->role->name == 'pemray')
-                <li
-                    class="sidebar-item has-sub {{ Request::is('data_siswa*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ Request::is('data_siswa*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-card-checklist"></i>
                         <span>Data Siswa</span>
