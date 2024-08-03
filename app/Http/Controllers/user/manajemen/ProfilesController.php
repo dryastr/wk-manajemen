@@ -17,8 +17,7 @@ class ProfilesController extends Controller
      */
     public function show(string $id)
     {
-        // Hanya izinkan pengguna melihat profil mereka sendiri
-        $user = User::findOrFail($id);
+        $user = User::with('rayons')->findOrFail($id);
 
         if (Auth::id() !== (int) $id) {
             return redirect()->route('profiles.show', Auth::id())
@@ -30,7 +29,6 @@ class ProfilesController extends Controller
 
     public function edit(string $id)
     {
-        // Hanya izinkan pengguna mengedit profil mereka sendiri
         $user = User::findOrFail($id);
 
         if (Auth::id() !== (int) $id) {
@@ -48,7 +46,6 @@ class ProfilesController extends Controller
     {
         $user = User::findOrFail($id);
 
-        // Cek apakah pengguna yang mengupdate adalah pengguna yang sama
         if (Auth::id() !== (int) $id) {
             return redirect()->route('profiles.edit', Auth::id())
                 ->withErrors(['error' => 'Anda tidak memiliki izin untuk memperbarui profil pengguna ini.']);
@@ -75,12 +72,10 @@ class ProfilesController extends Controller
         }
 
         if ($request->hasFile('profile_image')) {
-            // Hapus file gambar lama jika ada
             if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
                 Storage::disk('public')->delete($user->profile_image);
             }
 
-            // Simpan file gambar baru
             $imagePath = $request->file('profile_image')->store('profile_images', 'public');
             $user->profile_image = $imagePath;
         }

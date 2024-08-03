@@ -75,7 +75,7 @@
                         <div class="mb-3">
                             <label for="rayon" class="form-label">Rayon</label>
                             <input type="text" class="form-control" id="rayon"
-                                value="{{ $user->rayon->name ?? '-' }}" readonly>
+                                   value="{{ optional($user->rayons->first())->name ?? '-' }}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="created_at" class="form-label">Dibuat pada</label>
