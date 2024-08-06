@@ -11,9 +11,9 @@
             <div class="card-content">
                 <div class="card-body">
                     <ul>
-                        <li><strong>Nama:</strong> {{ $user->name }}</li>
-                        <li><strong>Email:</strong> {{ $user->email }}</li>
-                        <li><strong>Role:</strong> {{ $user->role }}</li>
+                        <li><strong>Nama:</strong> {{ $showUser->name }}</li>
+                        <li><strong>Email:</strong> {{ $showUser->email }}</li>
+                        <li><strong>Role:</strong> {{ $showUser->role->name }}</li>
                     </ul>
                     <a href="{{ route('addusers.index') }}" class="btn btn-secondary">Kembali</a>
                 </div>

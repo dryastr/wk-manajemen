@@ -19,7 +19,7 @@ class BebasTunggakansController extends Controller
             $query->where('name', 'user');
         })->get();
 
-        return view('admin.admin.validasi.bebas_tunggakan.index', compact('users'));
+        return view('admin.admin_keuangan.validasi.bebas_tunggakan.index', compact('users'));
     }
 
     /**
@@ -28,7 +28,7 @@ class BebasTunggakansController extends Controller
     public function edit(string $id)
     {
         $detailUserEdit  = User::findOrFail($id);
-        return view('admin.admin.validasi.bebas_tunggakan.edit', compact('detailUserEdit'));
+        return view('admin.admin_keuangan.validasi.bebas_tunggakan.edit', compact('detailUserEdit'));
     }
 
     /**

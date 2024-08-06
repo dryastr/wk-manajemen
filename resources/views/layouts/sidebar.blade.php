@@ -128,9 +128,35 @@
                             <a href="{{ route('kecakapan_softskills.index') }}" class="submenu-link">Kecakapan
                                 Softskill</a>
                         </li>
+                    </ul>
+                </li>
+            @endif
+
+            @if (auth()->user()->role->name == 'admin_keuangan')
+                <li
+                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') || Request::is('bebas_pustaka*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Validasi</span>
+                    </a>
+
+                    <ul class="submenu">
                         <li class="submenu-item {{ Request::routeIs('bebas_tunggakan.index') ? 'active' : '' }}">
                             <a href="{{ route('bebas_tunggakan.index') }}" class="submenu-link">Bebas Tunggakan</a>
                         </li>
+                    </ul>
+                </li>
+            @endif
+
+            @if (auth()->user()->role->name == 'admin_perpustakaan')
+                <li
+                    class="sidebar-item has-sub {{ Request::is('kecakapan_softskills*') || Request::is('bebas_tunggakan*') || Request::is('bebas_pustaka*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Validasi</span>
+                    </a>
+
+                    <ul class="submenu">
                         <li class="submenu-item {{ Request::routeIs('bebas_pustaka.index') ? 'active' : '' }}">
                             <a href="{{ route('bebas_pustaka.index') }}" class="submenu-link">Bebas Pustaka</a>
                         </li>

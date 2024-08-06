@@ -45,6 +45,10 @@ class LoginController extends Controller
                 return redirect()->route('super_admin.dashboard');
             case 'admin':
                 return redirect()->route('admin.dashboard');
+            case 'admin_keuangan':
+                return redirect()->route('admin_keuangan.dashboard');
+            case 'admin_perpustakaan':
+                return redirect()->route('admin_perpustakaan.dashboard');
             case 'kaprog':
                 return redirect()->route('kaprog.dashboard');
             case 'pemray':

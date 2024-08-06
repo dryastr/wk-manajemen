@@ -71,8 +71,8 @@ class AddUsersController extends Controller
             'nis' => 'nullable|string',
             'kelas' => 'nullable|string',
             'jurusan_id' => 'nullable|exists:jurusans,id',
-            'rayon_id' => 'nullable|array',
-            'rayon_id.*' => 'nullable|exists:rayons,id',
+            'rayon_id' => 'nullable',
+            // 'rayon_id.*' => 'nullable|exists:rayons,id',
             'rombel_id' => 'nullable|exists:rombels,id',
         ]);
 
@@ -130,8 +130,8 @@ class AddUsersController extends Controller
             'nis' => 'nullable|string',
             'kelas' => 'nullable|string',
             'jurusan_id' => 'nullable|exists:jurusans,id',
-            'rayon_id' => 'nullable|array',
-            'rayon_id.*' => 'nullable|exists:rayons,id',
+            'rayon_id' => 'nullable|string',
+            // 'rayon_id.*' => 'nullable|exists:rayons,id',
             'rombel_id' => 'nullable|exists:rombels,id',
         ]);
 
@@ -189,8 +189,8 @@ class AddUsersController extends Controller
 
     public function show($id)
     {
-        $user = User::with(['role', 'jurusan', 'rayon', 'rombel'])->findOrFail($id);
-        return view('admin.super_admin.users.show', compact('user'));
+        $showUser = User::with(['role', 'jurusan', 'rayon', 'rombel'])->findOrFail($id);
+        return view('admin.super_admin.users.show', compact('showUser'));
     }
 
     public function destroy($id)

@@ -100,16 +100,24 @@
                                     <label for="rayon_id">Rayon</label>
                                 </div>
                                 <div class="col-md-8 form-group" id="rayon-input" style="display: none;">
-                                    <select id="rayon_id" class="form-control select2" name="rayon_id[]" multiple>
+                                    <select id="rayon_id" class="form-control" name="rayon_id[]">
+                                        <option value="" disabled selected>Pilih Rayon</option>
+                                        @foreach ($rayons as $rayon)
+                                            <option value="{{ $rayon->id }}">{{ $rayon->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- <div class="col-md-4" id="rayon-group" style="">
+                                    <label for="rayon_id">Rayon</label>
+                                </div>
+                                <div class="col-md-8 form-group" id="rayon-input" style="">
+                                    <select id="rayon_id" class="form-control" name="rayon_id[]" multiple>
                                         <option value="" disabled>Pilih Rayon</option>
                                         @foreach ($rayons as $rayon)
                                             <option value="{{ $rayon->id }}">{{ $rayon->name }}</option>
                                         @endforeach
                                     </select>
-                                    <button type="button" class="btn btn-danger mt-2" onclick="clearRayons()">Hapus
-                                        Pilihan
-                                        Rayon</button>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4" id="rombel-group" style="display: none;">
                                     <label for="rombel_id">Rombel</label>
                                 </div>
@@ -123,7 +131,7 @@
                                 </div>
                                 <div class="col-sm-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Batal</button>
+                                    <a href="{{ route('addusers.index') }}" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
                                 </div>
                             </div>
                         </div>
@@ -135,9 +143,7 @@
 @endsection
 
 @push('scripts')
-    {{-- links --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         function toggleFields() {
             var roleSelect = document.getElementById('role_id');
@@ -159,19 +165,12 @@
             document.getElementById('rayon-input').style.display = showRayon ? 'block' : 'none';
             document.getElementById('rombel-group').style.display = showRombel ? 'block' : 'none';
             document.getElementById('rombel-input').style.display = showRombel ? 'block' : 'none';
-
-            if (showRayon) {
-                $('.select2').select2({
-                    placeholder: "Pilih Rayon",
-                    allowClear: true
-                });
-            }
         }
 
-        function clearRayons() {
-            var rayonSelect = $('#rayon_id').select2();
-            rayonSelect.val(null).trigger('change');
-        }
+        // function clearRayons() {
+        //     var rayonSelect = document.getElementById('rayon_id');
+        //     rayonSelect.selectedIndex = -1;
+        // }
 
         $(document).ready(function() {
             toggleFields();

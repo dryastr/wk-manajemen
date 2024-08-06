@@ -18,7 +18,8 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form action="{{ route('addusers.update', $detailUserEdit->id) }}" method="POST" class="form form-horizontal">
+                    <form action="{{ route('addusers.update', $detailUserEdit->id) }}" method="POST"
+                        class="form form-horizontal">
                         @csrf
                         @method('PUT')
                         <div class="form-body">
@@ -28,14 +29,16 @@
                                 </div>
                                 <div class="col-md-8 form-group">
                                     <input type="text" id="name" class="form-control" name="name"
-                                        placeholder="Nama Pengguna" value="{{ old('name', $detailUserEdit->name) }}" required>
+                                        placeholder="Nama Pengguna" value="{{ old('name', $detailUserEdit->name) }}"
+                                        required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col-md-8 form-group">
                                     <input type="email" id="email" class="form-control" name="email"
-                                        placeholder="Email Pengguna" value="{{ old('email', $detailUserEdit->email) }}" required>
+                                        placeholder="Email Pengguna" value="{{ old('email', $detailUserEdit->email) }}"
+                                        required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="password">Password</label>
@@ -116,8 +119,7 @@
                                 </div>
                                 <div class="col-md-8 form-group" id="rayon-input"
                                     style="{{ $detailUserEdit->role->name === 'user' || $detailUserEdit->role->name === 'pemray' ? 'display: block;' : 'display: none;' }}">
-                                    <select id="rayon_id" class="form-control select2" name="rayon_id[]"
-                                        multiple="multiple">
+                                    <select id="rayon_id" class="form-control" name="rayon_id">
                                         <option value="" disabled>Pilih Rayon</option>
                                         @foreach ($rayons as $rayon)
                                             <option value="{{ $rayon->id }}"
@@ -126,8 +128,6 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                    <button type="button" class="btn btn-danger mt-2" onclick="clearRayons()">Hapus
-                                        Pilihan Rayon</button>
                                 </div>
                                 <div class="col-md-4" id="rombel-group"
                                     style="{{ $detailUserEdit->role->name === 'user' ? 'display: block;' : 'display: none;' }}">
@@ -146,7 +146,8 @@
                                 </div>
                                 <div class="col-sm-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Ubah</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Batal</button>
+                                    <a href="{{ route('addusers.index') }}"
+                                        class="btn btn-light-secondary me-1 mb-1">Kembali</a>
                                 </div>
                             </div>
                         </div>
@@ -159,8 +160,8 @@
 
 @push('scripts')
     {{-- links --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
     <script>
         function toggleFields() {
             var roleSelect = document.getElementById('role_id');
@@ -183,18 +184,18 @@
             document.getElementById('rombel-group').style.display = showRombel ? 'block' : 'none';
             document.getElementById('rombel-input').style.display = showRombel ? 'block' : 'none';
 
-            if (showRayon) {
-                $('.select2').select2({
-                    placeholder: "Pilih Rayon",
-                    allowClear: true
-                });
-            }
+            // if (showRayon) {
+            //     $('.select2').select2({
+            //         placeholder: "Pilih Rayon",
+            //         allowClear: true
+            //     });
+            // }
         }
 
-        function clearRayons() {
-            var rayonSelect = $('#rayon_id').select2();
-            rayonSelect.val(null).trigger('change');
-        }
+        // function clearRayons() {
+        //     var rayonSelect = $('#rayon_id').select2();
+        //     rayonSelect.val(null).trigger('change');
+        // }
 
         $(document).ready(function() {
             toggleFields();

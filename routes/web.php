@@ -3,6 +3,8 @@
 use App\Exports\BebasPustakaExport;
 use App\Exports\BebasTunggakanExport;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminKeuanganController;
+use App\Http\Controllers\admin\AdminPerpustakaanController;
 use App\Http\Controllers\admin\KaprogController;
 use App\Http\Controllers\admin\manajemen\AddUsersController;
 use App\Http\Controllers\admin\manajemen\BebasPustakasController;
@@ -41,6 +43,10 @@ Route::get('/', function () {
                 return redirect()->route('super_admin.dashboard');
             case 'admin':
                 return redirect()->route('admin.dashboard');
+            case 'admin_keuangan':
+                return redirect()->route('admin_keuangan.dashboard');
+            case 'admin_perpustakaan':
+                return redirect()->route('admin_perpustakaan.dashboard');
             case 'kaprog':
                 return redirect()->route('kaprog.dashboard');
             case 'pemray':
@@ -51,10 +57,6 @@ Route::get('/', function () {
     }
     return redirect()->route('login');
 })->name('home');
-
-// Route::get('/register', function () {
-//     return redirect()->route('login');
-// });
 
 Auth::routes(['register' => false]);
 
@@ -72,10 +74,18 @@ Route::middleware(['auth', 'role.admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('kecakapan_softskills', KecakapanSoftskillsController::class)->except(['create', 'store', 'show', 'destroy']);
     Route::get('kecakapan_softskills/export/{status}', [KecakapanSoftskillsController::class, 'exportExcel'])->name('kecakapan_softskills.export');
+});
+
+Route::middleware(['auth', 'role.admin_keuangan'])->group(function () {
+    Route::get('/admin_keuangan', [AdminKeuanganController::class, 'index'])->name('admin_keuangan.dashboard');
     Route::resource('bebas_tunggakan', BebasTunggakansController::class)->except(['create', 'store', 'show', 'destroy']);
-    Route::get('bebas_tunggakan/export/{status}', [BebasTunggakanExport::class, 'exportExcel'])->name('bebas_tunggakan.export');
+    Route::get('bebas_tunggakan/export/{status}', [BebasTunggakansController::class, 'exportExcel'])->name('bebas_tunggakan.export');
+});
+
+Route::middleware(['auth', 'role.admin_perpustakaan'])->group(function () {
+    Route::get('/admin_perpustakaan', [AdminPerpustakaanController::class, 'index'])->name('admin_perpustakaan.dashboard');
     Route::resource('bebas_pustaka', BebasPustakasController::class)->except(['create', 'store', 'show', 'destroy']);
-    Route::get('bebas_pustaka/export/{status}', [BebasPustakaExport::class, 'exportExcel'])->name('bebas_pustaka.export');
+    Route::get('bebas_pustaka/export/{status}', [BebasPustakasController::class, 'exportExcel'])->name('bebas_pustaka.export');
 });
 
 Route::middleware(['auth', 'role.kaprog'])->group(function () {

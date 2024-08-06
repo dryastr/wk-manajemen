@@ -86,6 +86,17 @@ class UserController extends Controller
     //     return $pdf->download('persyaratan.pdf');
     // }
 
+    protected function generateRandomCode($length = 6)
+    {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomCode = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomCode .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomCode;
+    }
+
     public function showPdfPage()
     {
         $user = Auth::user();
@@ -127,8 +138,10 @@ class UserController extends Controller
             'Michael Wilson',
         ];
 
+        $no_daftar = $this->generateRandomCode();
+
         $data = [
-            'no_daftar' => '123456',
+            'no_daftar' => $no_daftar,
             'tanggal_daftar' => now()->format('d/m/Y'),
             'nama' => $user->name,
             'nis' => $user->nis,

@@ -280,6 +280,11 @@
             window.print();
         };
     </script>
+    <script>
+        window.onafterprint = function() {
+            window.location.href = "{{ route('home') }}";
+        };
+    </script>
 </body>
 
 </html>

@@ -43,12 +43,12 @@
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div class="position-relative d-flex align-items-center justify-content-center"
+                        {{-- <div class="position-relative d-flex align-items-center justify-content-center"
                             style="height: 120px; width: 120px; margin: 0 auto;">
                             <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
                                 alt="{{ $user->name }}" width="120" height="120" style="border-radius: 50%;"
                                 class="profile-image">
-                        </div>
+                        </div> --}}
 
                         <div class="d-flex flex-column align-items-center justify-content-center mt-3">
                             <h4 class="card-header fw-bold pb-1 pt-2 mb-0">{{ $user->name }}</h4>

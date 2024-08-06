@@ -70,6 +70,8 @@ class Kernel extends HttpKernel
         'redirectIfAuthenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'role.super_admin' => \App\Http\Middleware\CheckRoleSuperAdmin::class,
         'role.admin' => \App\Http\Middleware\CheckRoleAdmin::class,
+        'role.admin_keuangan' => \App\Http\Middleware\CheckRoleAdminKeuangan::class,
+        'role.admin_perpustakaan' => \App\Http\Middleware\CheckRoleAdminPerpustakaan::class,
         'role.kaprog' => \App\Http\Middleware\CheckRoleKaprog::class,
         'role.pemray' => \App\Http\Middleware\CheckRolePemray::class,
         'role.user' => \App\Http\Middleware\CheckRoleUser::class,

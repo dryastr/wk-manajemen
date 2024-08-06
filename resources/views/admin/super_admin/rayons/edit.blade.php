@@ -25,7 +25,7 @@
 
                                 <div class="col-sm-12 d-flex justify-content-end mt-5">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                    <a href="{{ route('rayons.index') }}" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
                                 </div>
                             </div>
                         </div>

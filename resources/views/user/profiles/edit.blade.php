@@ -47,7 +47,7 @@
                             @csrf
                             @method('PUT')
 
-                            <div class="position-relative d-flex align-items-center justify-content-center"
+                            {{-- <div class="position-relative d-flex align-items-center justify-content-center"
                                 style="height: 120px; width: 120px; margin: 0 auto;">
                                 <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}"
                                     alt="{{ $user->name }}" width="120" height="120" style="border-radius: 50%;"
@@ -60,7 +60,7 @@
                                             style="display: none;">
                                     </label>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="mb-3 mt-3">
                                 <label for="name" class="form-label">Nama</label>
