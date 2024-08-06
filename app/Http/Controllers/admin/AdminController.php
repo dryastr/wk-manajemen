@@ -17,7 +17,7 @@ class AdminController extends Controller
             $query->where('roles.id', $roleIdUser);
         })->count();
 
-        $statuses = ['kecakapan_hardskill', 'kecakapan_softskill', 'bebas_tunggakan', 'bebas_pustaka', 'test_kelayakan'];
+        $statuses = ['kecakapan_softskill'];
         $counts = [];
 
         foreach ($statuses as $status) {
@@ -34,16 +34,8 @@ class AdminController extends Controller
 
         return view('admin.admin.dashboard', [
             'totalSiswa' => $totalSiswa,
-            'kecakapanHardskillBelum' => $counts['kecakapan_hardskillBelum'],
-            'kecakapanHardskillSudah' => $counts['kecakapan_hardskillSudah'],
             'kecakapanSoftskillBelum' => $counts['kecakapan_softskillBelum'],
             'kecakapanSoftskillSudah' => $counts['kecakapan_softskillSudah'],
-            'bebasTunggakanBelum' => $counts['bebas_tunggakanBelum'],
-            'bebasTunggakanSudah' => $counts['bebas_tunggakanSudah'],
-            'bebasPustakaBelum' => $counts['bebas_pustakaBelum'],
-            'bebasPustakaSudah' => $counts['bebas_pustakaSudah'],
-            'testKelayakanBelum' => $counts['test_kelayakanBelum'],
-            'testKelayakanSudah' => $counts['test_kelayakanSudah'],
         ]);
     }
 }

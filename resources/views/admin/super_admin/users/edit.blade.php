@@ -64,6 +64,10 @@
                                                     Super Admin
                                                 @elseif ($role->name == 'admin')
                                                     Admin
+                                                @elseif ($role->name == 'admin_keuangan')
+                                                    Admin Keuangan
+                                                @elseif ($role->name == 'admin_perpustakaan')
+                                                    Admin Perpustakaan
                                                 @elseif ($role->name == 'kaprog')
                                                     Kaprog
                                                 @elseif ($role->name == 'pemray')

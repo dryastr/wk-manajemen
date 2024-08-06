@@ -21,14 +21,6 @@
             <a class="nav-link" id="hardskill-tab" data-bs-toggle="tab" href="#hardskill" role="tab"
                 aria-controls="hardskill" aria-selected="false">Kecakapan Hardskill</a>
         </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="softskill-tab" data-bs-toggle="tab" href="#softskill" role="tab"
-                aria-controls="softskill" aria-selected="false">Kecakapan Softskill</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="bebas-tab" data-bs-toggle="tab" href="#bebas" role="tab" aria-controls="bebas"
-                aria-selected="false">Bebas</a>
-        </li>
     </ul>
 
     <div class="tab-content" id="myTabContent">
@@ -108,92 +100,5 @@
                 </div>
             </div>
         </div>
-
-        <div class="tab-pane fade" id="softskill" role="tabpanel" aria-labelledby="softskill-tab">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <h6 class="text-muted font-semibold">Kecakapan Softskill Belum Validasi</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $kecakapanSoftskillBelum }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <h6 class="text-muted font-semibold">Kecakapan Softskill Sudah Validasi</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $kecakapanSoftskillSudah }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="bebas" role="tabpanel" aria-labelledby="bebas-tab">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <h6 class="text-muted font-semibold">Bebas Tunggakan Belum Validasi</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $bebasTunggakanBelum }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <h6 class="text-muted font-semibold">Bebas Tunggakan Sudah Validasi</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $bebasTunggakanSudah }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <h6 class="text-muted font-semibold">Bebas Pustaka Belum Validasi</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $bebasPustakaBelum }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <h6 class="text-muted font-semibold">Bebas Pustaka Sudah Validasi</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $bebasPustakaSudah }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 @endsection

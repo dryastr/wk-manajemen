@@ -24,6 +24,14 @@
                                     aria-controls="admin" aria-selected="false">Admin</a>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="admin_keuangan-tab" data-bs-toggle="tab" href="#admin_keuangan" role="tab"
+                                    aria-controls="admin_keuangan" aria-selected="false">Admin Keuangan</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="admin_perpustakaan-tab" data-bs-toggle="tab" href="#admin_perpustakaan" role="tab"
+                                    aria-controls="admin_perpustakaan" aria-selected="false">Admin Perpustakaan</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="kaprog-tab" data-bs-toggle="tab" href="#kaprog" role="tab"
                                     aria-controls="kaprog" aria-selected="false">Kaprog</a>
                             </li>
@@ -46,6 +54,16 @@
                             <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
                                 @include('admin.super_admin.users.partials.users_table', [
                                     'users' => $users->filter(fn($user) => $user->role->name === 'admin'),
+                                ])
+                            </div>
+                            <div class="tab-pane fade" id="admin_keuangan" role="tabpanel" aria-labelledby="admin_keuangan-tab">
+                                @include('admin.super_admin.users.partials.users_table', [
+                                    'users' => $users->filter(fn($user) => $user->role->name === 'admin_keuangan'),
+                                ])
+                            </div>
+                            <div class="tab-pane fade" id="admin_perpustakaan" role="tabpanel" aria-labelledby="admin_perpustakaan-tab">
+                                @include('admin.super_admin.users.partials.users_table', [
+                                    'users' => $users->filter(fn($user) => $user->role->name === 'admin_perpustakaan'),
                                 ])
                             </div>
                             <div class="tab-pane fade" id="kaprog" role="tabpanel" aria-labelledby="kaprog-tab">
