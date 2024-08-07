@@ -101,7 +101,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $userJurusan = $user->jurusan;
+        $userJurusan = $user->jurusan->name;
 
         $userRayon = $user->userRayon()->with('rayon')->first();
         $rayon = $userRayon ? $userRayon->rayon->name : 'N/A';
@@ -145,7 +145,7 @@ class UserController extends Controller
             'tanggal_daftar' => now()->format('d/m/Y'),
             'nama' => $user->name,
             'nis' => $user->nis,
-            'program_keahlian' => 'Pengembangan Perangkat Lunak dan Gim (PPLG)',
+            'program_keahlian' => $userJurusan,
             'rayon' => $rayon,
         ];
 
