@@ -13,7 +13,9 @@ use App\Http\Controllers\admin\manajemen\JurusansController;
 use App\Http\Controllers\admin\manajemen\KecakapanHardskillsController;
 use App\Http\Controllers\admin\manajemen\KecakapanSoftskillsController;
 use App\Http\Controllers\admin\manajemen\RayonsController;
+use App\Http\Controllers\admin\manajemen\RequestUserPlacmentController;
 use App\Http\Controllers\admin\manajemen\RombelsController;
+use App\Http\Controllers\admin\manajemen\TemplateRequestsController;
 use App\Http\Controllers\admin\manajemen\TestKelayakansController;
 use App\Http\Controllers\admin\manajemen\ValidasiKaprogController;
 use App\Http\Controllers\admin\PemrayController;
@@ -21,6 +23,7 @@ use App\Http\Controllers\admin\SuperAdminController;
 use App\Http\Controllers\user\manajemen\PersyaratansController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\user\manajemen\ProfilesController;
+use App\Http\Controllers\User\Manajemen\RequestPlacementController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +71,9 @@ Route::middleware(['auth', 'role.super_admin'])->group(function () {
     Route::resource('jurusans', JurusansController::class);
     Route::resource('addusers', AddUsersController::class);
     Route::resource('rombels', RombelsController::class);
+    Route::resource('request_placement_user', RequestUserPlacmentController::class);
+    Route::patch('/admin/request_placement_user_update/{id}/status', [RequestUserPlacmentController::class, 'updateStatus'])->name('request_placement_update.updateStatus');
+    Route::resource('template_requests', TemplateRequestsController::class);
 });
 
 Route::middleware(['auth', 'role.admin'])->group(function () {
@@ -109,4 +115,6 @@ Route::middleware(['auth', 'role.user'])->group(function () {
     Route::get('profiles/{id}', [ProfilesController::class, 'show'])->name('profiles.show');
     Route::get('profiles/{id}/edit', [ProfilesController::class, 'edit'])->name('profiles.edit');
     Route::put('profiles/{id}', [ProfilesController::class, 'update'])->name('profiles.update');
+
+    Route::resource('request_placement', RequestPlacementController::class);
 });

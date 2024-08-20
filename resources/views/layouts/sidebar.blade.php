@@ -113,6 +113,36 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item has-sub {{ Request::is('request_placement_user*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Request PKL</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('request_placement_user.index') ? 'active' : '' }}">
+                            <a href="{{ route('request_placement_user.index') }}" class="submenu-link">Daftar Request PKL</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('request_placement_user.create') ? 'active' : '' }}">
+                            <a href="{{ route('request_placement_user.create') }}" class="submenu-link">Tambah Request PKL</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item has-sub {{ Request::is('template_requests*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Tempalte Request PKL</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('template_requests.index') ? 'active' : '' }}">
+                            <a href="{{ route('template_requests.index') }}" class="submenu-link">Daftar Tempalte Request PKL</a>
+                        </li>
+                        <li class="submenu-item {{ Request::routeIs('template_requests.create') ? 'active' : '' }}">
+                            <a href="{{ route('template_requests.create') }}" class="submenu-link">Tambah Tempalte Request PKL</a>
+                        </li>
+                    </ul>
+                </li>
             @endif
 
             @if (auth()->user()->role->name == 'admin')
@@ -215,6 +245,19 @@
                             class="submenu-item {{ Request::routeIs('profiles.edit', auth()->user()->id) ? 'active' : '' }}">
                             <a href="{{ route('profiles.edit', auth()->user()->id) }}" class="submenu-link">Edit
                                 Profil</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item has-sub {{ Request::is('request_placement*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Data Request PKL</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ Request::routeIs('request_placement.index') ? 'active' : '' }}">
+                            <a href="{{ route('request_placement.index') }}" class="submenu-link">Daftar Request PKL</a>
                         </li>
                     </ul>
                 </li>
