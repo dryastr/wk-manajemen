@@ -72,6 +72,7 @@ Route::middleware(['auth', 'role.super_admin'])->group(function () {
     Route::resource('addusers', AddUsersController::class);
     Route::resource('rombels', RombelsController::class);
     Route::resource('request_placement_user', RequestUserPlacmentController::class);
+    Route::get('admin/request-placements/export', [RequestUserPlacmentController::class, 'export'])->name('request_placement_user.export');
     Route::patch('/admin/request_placement_user_update/{id}/status', [RequestUserPlacmentController::class, 'updateStatus'])->name('request_placement_update.updateStatus');
     Route::resource('template_requests', TemplateRequestsController::class);
 });

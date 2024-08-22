@@ -120,11 +120,10 @@
                     </a>
 
                     <ul class="submenu">
-                        <li class="submenu-item {{ Request::routeIs('request_placement_user.index') ? 'active' : '' }}">
-                            <a href="{{ route('request_placement_user.index') }}" class="submenu-link">Daftar Request PKL</a>
-                        </li>
-                        <li class="submenu-item {{ Request::routeIs('request_placement_user.create') ? 'active' : '' }}">
-                            <a href="{{ route('request_placement_user.create') }}" class="submenu-link">Tambah Request PKL</a>
+                        <li
+                            class="submenu-item {{ Request::routeIs('request_placement_user.index') ? 'active' : '' }}">
+                            <a href="{{ route('request_placement_user.index') }}" class="submenu-link">Daftar Request
+                                PKL</a>
                         </li>
                     </ul>
                 </li>
@@ -136,10 +135,8 @@
 
                     <ul class="submenu">
                         <li class="submenu-item {{ Request::routeIs('template_requests.index') ? 'active' : '' }}">
-                            <a href="{{ route('template_requests.index') }}" class="submenu-link">Daftar Tempalte Request PKL</a>
-                        </li>
-                        <li class="submenu-item {{ Request::routeIs('template_requests.create') ? 'active' : '' }}">
-                            <a href="{{ route('template_requests.create') }}" class="submenu-link">Tambah Tempalte Request PKL</a>
+                            <a href="{{ route('template_requests.index') }}" class="submenu-link">Daftar Tempalte
+                                Request PKL</a>
                         </li>
                     </ul>
                 </li>
@@ -257,7 +254,8 @@
 
                     <ul class="submenu">
                         <li class="submenu-item {{ Request::routeIs('request_placement.index') ? 'active' : '' }}">
-                            <a href="{{ route('request_placement.index') }}" class="submenu-link">Daftar Request PKL</a>
+                            <a href="{{ route('request_placement.index') }}" class="submenu-link">Daftar Request
+                                PKL</a>
                         </li>
                     </ul>
                 </li>

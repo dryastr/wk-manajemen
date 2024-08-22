@@ -9,11 +9,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">Daftar Request Penempatan PKL</h4>
-                        <div>
-                            <button class="btn btn-primary btn-sm d-none" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                                Upload File
-                            </button>
-                        </div>
+                        <a href="{{ route('request_placement_user.export') }}" class="btn btn-success">Export to Excel</a>
                     </div>
                 </div>
                 <div class="card-content">

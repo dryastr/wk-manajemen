@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\admin\manajemen;
 
+use App\Exports\RequestPlacementExport;
 use App\Http\Controllers\Controller;
 use App\Models\RequestPlacement;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RequestUserPlacmentController extends Controller
 {
@@ -26,6 +28,11 @@ class RequestUserPlacmentController extends Controller
         ]);
 
         return redirect()->route('request_placement_user.index')->with('success', 'Status berhasil diperbarui.');
+    }
+
+    public function export()
+    {
+        return Excel::download(new RequestPlacementExport, 'request_placements.xlsx');
     }
 
     /**
